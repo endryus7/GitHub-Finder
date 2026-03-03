@@ -2,7 +2,7 @@ type SearchProps = {
     loadUser: (userName: string) => Promise<void>
 }
 
-import { useState, KeyboardEvent } from "react"
+import { useState, type KeyboardEvent } from "react"
 
 import { BsSearch } from "react-icons/bs"
 
