@@ -4,20 +4,26 @@ import type { UserProps } from "../types/user"
 import Search from "../components/Search"
 import User from "../components/User"
 import Erro from "../components/Erro"
+import Loader from "../components/Loader"
 
 import { useState } from "react"
+
 
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null)
   const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const loadUser = async(userName: string) => {
+    setIsLoading(true)
     setError(false)
     setUser(null)
 
     const res = await fetch(`https://api.github.com/users/${userName}`)
 
     const data = await res.json()
+
+    setIsLoading(false)
 
     if(res.status === 404) {
       setError(true)
@@ -40,6 +46,7 @@ const Home = () => {
   return (
     <div>
       <Search loadUser={loadUser} />
+      {isLoading && <Loader />}
       {user && <User {...user} />}
       {error && <Erro />}
     </div>
