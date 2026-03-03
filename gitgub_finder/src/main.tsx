@@ -6,8 +6,8 @@ import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // Pages
-import Home from './routes/Home.tsx'
-import Repos from './routes/Repos.tsx'
+import Home from './routes/Home'
+import Repos from './routes/Repos'
 
 const router = createBrowserRouter([
   {
